@@ -32,7 +32,14 @@ This project combines CLI tooling, NLP parsing, data modeling, and food APIs int
 ## 📸 CLI Demo
 
 ```bash
-$ meal log "2 scrambled eggs and a banana"
+To run the CLI locally, use: python main.py followed by the available commands - currently just 'add'.
+
+$ add "2 scrambled eggs and a banana"
+> Food name: egg
+> Protein: 7
+> Carbs: 12
+> Fat: 2
+> Fibre: 1
 > Logged: scrambled eggs, banana
 > Current total: Protein 14g | Carbs 25g | Fat 10g
 
@@ -44,3 +51,6 @@ $ meal suggest
 > Try: grilled chicken breast with broccoli and quinoa
 > Est. macros: Protein 45g | Carbs 30g | Fat 10g
 ```
+
+### To view the db rows:
+sqlite-utils rows meals.db meals

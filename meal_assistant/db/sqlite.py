@@ -14,7 +14,8 @@ def init_db():
             food_name TEXT,
             protein REAL,
             carbs REAL,
-            fat REAL
+            fat REAL,
+            fibre REAL
         )
     """)
     conn.commit()
@@ -27,8 +28,8 @@ def log_meal(meal_type: str, food_items: list[dict]):
     now = datetime.now().isoformat()
     for food in food_items:
         c.execute(
-            "INSERT INTO meals (timestamp, meal_type, food_name, protein, carbs, fat) VALUES (?, ?, ?, ?, ?, ?)",
-            (now, meal_type, food["name"], food["protein"], food["carbs"], food["fat"])
+            "INSERT INTO meals (timestamp, meal_type, food_name, protein, carbs, fat, fibre) VALUES (?, ?, ?, ?, ?, ?, ?)",
+            (now, meal_type, food["name"], food["protein"], food["carbs"], food["fat"], food["fibre"])
         )
     conn.commit()
     conn.close()
