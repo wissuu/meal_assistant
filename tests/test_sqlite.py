@@ -1,6 +1,6 @@
 import unittest
-from unittest.mock import patch, MagicMock, ANY
-from meal_assistant.db.sqlite import log_meal
+from unittest.mock import patch, MagicMock, ANY, call
+from meal_assistant.db.sqlite import log_meal, init_db
 
 class TestLogMeal(unittest.TestCase):
     @patch("meal_assistant.db.sqlite.sqlite3.connect")
@@ -39,6 +39,34 @@ class TestLogMeal(unittest.TestCase):
 
         assert calls[1][0][0].startswith("INSERT INTO meals")
         assert calls[1][0][1][1:] == ("Lunch", "Rice", 4, 45, 1, 2)
+
+        mock_conn.commit.assert_called_once()
+        mock_conn.close.assert_called_once()
+
+class TestInitDb(unittest.TestCase):
+    @patch("meal_assistant.db.sqlite.sqlite3.connect")
+    def test_init_db(self, mock_connect):
+        # Mock the database connection and cursor
+        mock_conn = MagicMock()
+        mock_cursor = MagicMock()
+        mock_connect.return_value = mock_conn
+        mock_conn.cursor.return_value = mock_cursor
+
+        init_db()
+
+        expected_create_sql = """
+        CREATE TABLE IF NOT EXISTS meals (
+            id INTEGER PRIMARY KEY,
+            timestamp TEXT,
+            meal_type TEXT,
+            food_name TEXT,
+            protein REAL,
+            carbs REAL,
+            fat REAL,
+            fibre REAL
+        )
+    """
+        mock_cursor.execute.assert_has_calls([call(expected_create_sql)])
         
         mock_conn.commit.assert_called_once()
         mock_conn.close.assert_called_once()

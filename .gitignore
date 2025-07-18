@@ -1,0 +1,14 @@
+# Virtual env
+.venv/
+
+# Bytecode
+__pycache__/
+*.pyc
+
+# Editor settings
+.vscode/
+.idea/
+
+# Env/config files
+.env
+*.db
