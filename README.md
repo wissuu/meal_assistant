@@ -52,5 +52,10 @@ User: Yes, store it
 Assistant: Great! I've stored "Grilled chicken salad with quinoa" in your meal database.
 ```
 
-### To view the db rows:
+## How to's
+
+### Database commands
+
 sqlite-utils rows meals.db meals
+
+### Run the tests
