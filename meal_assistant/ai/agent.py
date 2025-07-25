@@ -3,6 +3,7 @@ from langchain.chat_models import init_chat_model
 from langchain.schema import AIMessage
 from .prompts import MEAL_PLANNING_PROMPT, CHAT_PROMPT
 from .api import get_meal_suggestions
+from meal_assistant.db.sqlite import log_meal
 
 class MealPlanningChat:
     def __init__(self):
@@ -12,7 +13,7 @@ class MealPlanningChat:
         )
         self.agent = create_react_agent(
             model=self.model,  
-            tools=[get_meal_suggestions],  
+            tools=[get_meal_suggestions, log_meal],  
             prompt=CHAT_PROMPT
         )
         self.conversation_history = []

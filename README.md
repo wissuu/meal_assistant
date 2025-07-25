@@ -10,15 +10,17 @@ This project combines CLI tooling, NLP parsing, data modeling, and food APIs int
 
 ## 🧪 Features
 
-- Log meals using natural language (`meal log "2 eggs and toast"`)
+- **One-shot meal search**: Quick meal suggestions with specific protein/calorie targets
+- **Interactive AI chat**: Natural conversation to find and store meals in your database
 - Track daily macros and compare against your goals
-- Get meal suggestions to hit your targets (e.g., 150g protein/day)
 
 ## 🛠️ Tech Stack
 
 - Python 3.11
 - Typer (CLI)
-- JSON storage
+- LangGraph + LangChain (AI agent)
+- Claude 3 Sonnet (via AWS Bedrock)
+- SQLite database
 - pydantic (models)
 - pytest
 
@@ -32,24 +34,22 @@ This project combines CLI tooling, NLP parsing, data modeling, and food APIs int
 ## 📸 CLI Demo
 
 ```bash
-To run the CLI locally, use: python main.py followed by the available commands - currently just 'add'.
+# One-shot meal search
+$ python main.py search --meal-type breakfast --target-protein 30 --target-calories 400
+> Greek yogurt parfait with granola and berries
+> Protein: 30g | Calories: 395 | Carbs: 45g | Fat: 12g
 
-$ add "2 scrambled eggs and a banana"
-> Food name: egg
-> Protein: 7
-> Carbs: 12
-> Fat: 2
-> Fibre: 1
-> Logged: scrambled eggs, banana
-> Current total: Protein 14g | Carbs 25g | Fat 10g
+# Interactive AI chat for meal planning
+$ python main.py chat
+> Hi! I can help you find meals and store them in your database. What are you looking for?
 
-$ meal status
-> Today's goals: Protein 150g | Carbs 180g | Fat 60g
-> So far:        Protein 54g | Carbs 90g | Fat 38g
+User: I need a high protein lunch around 500 calories
+Assistant: I found some great options! How about grilled chicken salad with quinoa?
+Protein: 35g | Calories: 485 | Carbs: 28g | Fat: 18g
+Would you like me to store this meal in your database?
 
-$ meal suggest
-> Try: grilled chicken breast with broccoli and quinoa
-> Est. macros: Protein 45g | Carbs 30g | Fat 10g
+User: Yes, store it
+Assistant: Great! I've stored "Grilled chicken salad with quinoa" in your meal database.
 ```
 
 ### To view the db rows:
