@@ -1,5 +1,6 @@
 import typer
 from meal_assistant.db.sqlite import init_db, log_meal
+from meal_assistant.ai.agent import get_meal_suggestions
 
 app = typer.Typer()
 
@@ -8,6 +9,11 @@ def init():
     """Initialize the database."""
     init_db()
     typer.echo("Database initialized.")
+
+@app.command()
+def search():
+    """Search for new meals."""
+    get_meal_suggestions("breakfast", target_protein=30, target_calories=400)
 
 @app.command()
 def add(meal_type: str):
