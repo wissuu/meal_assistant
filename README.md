@@ -6,7 +6,7 @@ Log what you eat in plain English, track your protein/carb/fat/fibre intake, and
 ## 💡 Why I Built This
 
 I wanted to learn Python by solving a real problem: planning meals based on macros, something I'm interested in in my personal life.  
-This project combines CLI tooling, NLP parsing, data modeling, and food APIs into a single, testable, practical tool.
+This project combines CLI tooling, AI agents, data modeling, and food APIs into a single, testable, practical tool.
 
 ## 🧪 Features
 
@@ -23,6 +23,11 @@ This project combines CLI tooling, NLP parsing, data modeling, and food APIs int
 - SQLite database
 - pydantic (models)
 - pytest
+
+## 🏗️ Architecture
+
+- **Hybrid approach**: Classes for stateful components (chat sessions, data models), functions for utilities (database operations, CLI commands)
+- **Modular design**: Separate feature-based modules for AI agents, database operations, data models, and CLI interface
 
 ## 🧭 Roadmap
 
