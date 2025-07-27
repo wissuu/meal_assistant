@@ -1,6 +1,7 @@
 import typer
 from meal_assistant.db.sqlite import init_db, log_meal
 from meal_assistant.ai.agent import get_meal_suggestions_command, MealPlanningChat
+from meal_assistant.models.food import FoodItem
 
 app = typer.Typer()
 
@@ -48,10 +49,10 @@ def chat():
 def add(meal_type: str):
     """Add a meal with macro info manually."""
     food_items = capture_items()
-    log_meal(meal_type, food_items)
-    typer.echo(f"Logged: ")
-    for food in food_items:
-        typer.echo(f"{food['name']}")
+    for food_dict in food_items:
+        food_item = FoodItem(**food_dict)
+        result = log_meal(meal_type, food_item)
+        typer.echo(result)
 
 def capture_items():
     items = []

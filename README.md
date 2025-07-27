@@ -58,4 +58,8 @@ Assistant: Great! I've stored "Grilled chicken salad with quinoa" in your meal d
 
 sqlite-utils rows meals.db meals
 
-### Run the tests
+### Set up project
+
+`pip install -e .` # Install in development mode`
+
+`pip install -e ".[dev]"` # Install with dev dependencies
