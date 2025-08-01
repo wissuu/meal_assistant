@@ -12,3 +12,5 @@ __pycache__/
 # Env/config files
 .env
 *.db
+pip.conf
+*.egg-info/
