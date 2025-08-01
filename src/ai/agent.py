@@ -2,8 +2,8 @@ from langgraph.prebuilt import create_react_agent
 from langchain.chat_models import init_chat_model
 from langchain.schema import AIMessage
 from .prompts import MEAL_PLANNING_PROMPT, CHAT_PROMPT
-from meal_assistant.ai.tools.meal_suggestions import get_meal_suggestions
-from meal_assistant.db.sqlite import log_meal
+from src.ai.tools.meal_suggestions import get_meal_suggestions
+from src.db.meals_repository import log_meal
 
 class MealPlanningChat:
     def __init__(self):

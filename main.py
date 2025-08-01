@@ -1,7 +1,7 @@
 import typer
-from meal_assistant.db.sqlite import init_db, log_meal
-from meal_assistant.ai.agent import get_meal_suggestions_command, MealPlanningChat
-from meal_assistant.models.food import FoodItem
+from src.db.meals_repository import init_db, log_meal
+from src.ai.agent import get_meal_suggestions_command, MealPlanningChat
+from src.models.food import FoodItem
 
 app = typer.Typer()
 

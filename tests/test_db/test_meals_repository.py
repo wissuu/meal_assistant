@@ -1,10 +1,10 @@
 import unittest
 from unittest.mock import patch, MagicMock, ANY, call
-from meal_assistant.db.meals_repository import log_meal, init_db
-from meal_assistant.models.food import FoodItem
+from src.db.meals_repository import log_meal, init_db
+from src.models.food import FoodItem
 
 class TestLogMeal(unittest.TestCase):
-    @patch("meal_assistant.db.meals_repository.sqlite3.connect")
+    @patch("src.db.meals_repository.sqlite3.connect")
     def test_log_meal(self, mock_connect):
         mock_conn = MagicMock()
         mock_cursor = MagicMock()
@@ -34,7 +34,7 @@ class TestLogMeal(unittest.TestCase):
         assert "Successfully logged Chicken as Lunch" in result
 
 class TestInitDb(unittest.TestCase):
-    @patch("meal_assistant.db.meals_repository.sqlite3.connect")
+    @patch("src.db.meals_repository.sqlite3.connect")
     def test_init_db(self, mock_connect):
         # Mock the database connection and cursor
         mock_conn = MagicMock()

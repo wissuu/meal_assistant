@@ -1,6 +1,6 @@
 import sqlite3
 from datetime import datetime
-from meal_assistant.models.food import FoodItem
+from src.models.food import FoodItem
 
 DB_PATH = "meals.db"
 
